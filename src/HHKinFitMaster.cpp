@@ -64,6 +64,7 @@ HHKinFitMaster::doFullFit()
       Double_t chi2_balance = advancedfitter.GetChi2_balance();
       Double_t prob_full = TMath::Prob(chi2_full,2);
       Double_t mH_full   = advancedfitter.GetFittedMH();
+      Int_t conv_full = advancedfitter.GetConvergence();
       std::pair< Int_t, Int_t > hypo_full(*mh1,*mh2);
       std::pair< std::pair< Int_t, Int_t >, Double_t > entry_chi2_full (hypo_full, chi2_full);
       std::pair< std::pair< Int_t, Int_t >, Double_t > entry_chi2_bjet1 (hypo_full, chi2_bjet1);
@@ -93,6 +94,7 @@ HHKinFitMaster::doFullFit()
         m_bestChi2FullFit = chi2_full;
         m_bestHypoFullFit = hypo_full;
         m_bestMHFullFit = mH_full;
+        m_bestConvFullFit = conv_full;
       }
       
       m_bjet1_fitted = advancedfitter.GetFitParticle(HHEventRecord::b1);
@@ -269,6 +271,12 @@ Double_t
 HHKinFitMaster::getBestMHFullFit()
 {
   return m_bestMHFullFit;
+}
+
+Int_t
+HHKinFitMaster::getBestConvFullFit()
+{
+  return m_bestConvFullFit;
 }
 
 std::map< std::pair< Int_t, Int_t >, Double_t >

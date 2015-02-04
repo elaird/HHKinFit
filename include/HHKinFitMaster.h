@@ -29,6 +29,7 @@ public:
   //Getters for fit results
   Double_t getBestChi2FullFit();
   Double_t getBestMHFullFit();
+  Int_t getBestConvFullFit();
   std::pair< Int_t, Int_t > getBestHypoFullFit();
   std::map< std::pair< Int_t, Int_t >, Double_t > getChi2FullFit();
   std::map< std::pair< Int_t, Int_t >, Double_t > getFitProbFullFit();
@@ -96,6 +97,7 @@ private:
 
   Double_t m_bestChi2FullFit;
   Double_t m_bestMHFullFit;
+  Int_t m_bestConvFullFit;
   std::pair< Int_t, Int_t > m_bestHypoFullFit;
 };
 
